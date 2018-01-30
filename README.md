@@ -9,21 +9,21 @@ The system is composed of a set of server modules and a client app.
 The server modules use several Open Source tools to achieve the desired result, namely:
 * Kamailio for SIP signaling
 * RTPEngine as RTP Server (for audio tunneling between clients)
-* nginx as Web Server
+* apache as Web Server
 * webpush-server: Push notifications to announce incoming calls
-* number-request-server: Server that manages new number assignments
+* allocatenumber-server: Server that manages new number assignments
 * MySQL: to manage all data
 * LetsEncrypt SSL certificates
 
-The client module is a Progressive-web-app (PWA) that is served by nginx.
+The client module is a Progressive-web-app (PWA) that is served by apache.
 
 # Architecture
 
 This describes the main relations between the modules of the system:
-* The nginx web server, using the LetsEncrypt SSL Certificate, exposes a public secure web service that serves the webph.one PWA in a certain DNS domain (for example https://example.webph.one/).
+* The apache web server, using the LetsEncrypt SSL Certificate, exposes a public secure web service that serves the webph.one PWA in a certain DNS domain (for example https://example.webph.one/).
 * When a user gets to the url https://example.webph.one/ using his web browser, he installs the PWA as an app in his phone.
-* If it is the PWA's first run, it will request the number-request-server a phone number for that device, so he can use that to call and be called.
-* The number-request-server will save in MySQL Database all information regarding new numbers registered and the credentials the phone uses to identify them.
+* If it is the PWA's first run, it will request the allocatenumber-server a phone number for that device, so he can use that to call and be called.
+* The allocatenumber-server will save in MySQL Database all information regarding new numbers registered and the credentials the phone uses to identify them.
 * The PWA will connect to the Kamailio SIP Server and register with Google Push Notifications Service to receive notifications of incoming calls.
 * The Kamailio SIP Server will talk with the MySQL Database to check the credentials of the connected user.
 * When the user triggers a call, a message is sent to Kamailio to notify the other callee that is being called.
@@ -57,3 +57,11 @@ To start the system run:
 ```bash
 docker-compose up
 ```
+
+# References
+
+This system is based on many components:
+* https://github.com/saycel/webph.one
+* https://github.com/saycel/webpush-server
+* https://github.com/saycel/kamailio-config
+* https://github.com/nicopace/allocatenumber-server
