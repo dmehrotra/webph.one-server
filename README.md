@@ -43,9 +43,9 @@ Clone the repository by doing:
 git clone --recursive https://github.com/saycel/Saycel.Phone.git
 ```
 
-You will need to modify the following files with your Domain specific information.
-All these files will contain variables for ease of use.
+There is still some manual copy of the kamailio configuration files that need to happen, fetch them here: https://github.com/saycel/kamailio-config
 
+The configuration of the system is stored in a file called .env.
 A dot-env file is provided as example, please copy it to .env and customize before running.
 
 ```bash
