@@ -56,5 +56,7 @@ services:
   ports:
    - "80"
    - "443"
+  env_file:
+   - .env
   environment:
    - VIRTUAL_HOST=${DOMAIN}

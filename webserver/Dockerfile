@@ -1,6 +1,6 @@
 FROM debian:8.0
 
-ENV	DOMAIN rhizortc.specialstories.org
+ARG	DOMAIN=rhizortc.specialstories.org
 
 RUN     echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list &&\
 	apt-get update &&\
