@@ -39,15 +39,21 @@ In order to run the system, you will need docker-compose installed.
 
 Clone the repository by doing:
 
-> git clone --recursive https://github.com/saycel/Saycel.Phone.git
+```bash
+git clone --recursive https://github.com/saycel/Saycel.Phone.git
+```
 
 You will need to modify the following files with your Domain specific information.
 All these files will contain variables for ease of use.
+
 A dot-env file is provided as example, please copy it to .env and customize before running.
 
-> cp dot-env .env
+```bash
+cp dot-env .env
+```
 
-To system:
+To start the system run:
 
-> docker-compose up
-
+```bash
+docker-compose up
+```
